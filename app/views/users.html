@@ -1,9 +1,12 @@
 <p>This is the users view</p>
 
-<div ng-repeat="use in users.data">
+<!--<div ng-repeat="user in users">
         <ul>
             <li>
                 In {{use.name}}, !
             </li>
             </ul>
-    </div>
+    </div> -->
+<ul>
+<li ng-repeat="u in theUsers"> {{u.name}}, {{u.surname}}</li>
+</ul>
