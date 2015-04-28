@@ -32,6 +32,10 @@ angular
                 templateUrl: 'views/users.html',
                 controller: 'UsersListCtrl'
             })
+            .when('/newuser', {
+                templateUrl: 'views/newUser.html',
+                controller: 'NewUserCtrl'
+            })
             .otherwise({
                 redirectTo: '/'
             });

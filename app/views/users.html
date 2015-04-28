@@ -1,12 +1,7 @@
 <p>This is the users view</p>
 
-<!--<div ng-repeat="user in users">
-        <ul>
-            <li>
-                In {{use.name}}, !
-            </li>
-            </ul>
-    </div> -->
 <ul>
-<li ng-repeat="u in theUsers"> {{u.name}}, {{u.surname}}</li>
+<li ng-repeat="u in theUsers"> {{u.name}} {{u.surname}} is someone great.
+    <button ng-click="deleteU(u.id)">delete him/her!</button>
+</li>
 </ul>

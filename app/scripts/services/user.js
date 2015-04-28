@@ -22,6 +22,7 @@ angular.module('yearbookApp')
             };
             $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Users/' + userId)
                 .success(successFunc) //success est une méthode qui attend en param une fonction
+                //pas anonyme cette fois-ci, on utilise celle qu'on a défini + haut
 
                 .error(function (error) {
                     failCB(error); //en cas d'erreur, on appelle la fonction failCB avec en param la fonction error, qui
@@ -32,7 +33,7 @@ angular.module('yearbookApp')
         delete: function (userId) {
             $http.delete('http://poo-ihm-2015-rest.herokuapp.com/api/Users/' + userId)
                 .success(function (Result) {
-                    console.log(Result);
+                    //console.log(Result);
                     //glop
                 })
                 .error(function (error) {
