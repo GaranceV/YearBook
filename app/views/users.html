@@ -2,6 +2,41 @@
 
 <ul>
 <li ng-repeat="u in theUsers"> {{u.name}} {{u.surname}} is someone great.
-    <button ng-click="deleteU(u.id)">delete him/her!</button>
+    <button class="btn-group btn-group-sm" data-toggle="modal"
+            data-target="#deleteConfirm" data-hisName="{{u.name}} {{u.surname}}" data-hisId="{{u.id}}">
+        delete him/her!<span class="glyphicon glyphicon-trash"></span></button>
 </li>
 </ul>
+
+<div class="modal fade bs-example-modal-sm" id="deleteConfirm" tabindex="-1" role="dialog" aria-labelledby="deleteConfirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-sm">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Delete someone</h4>
+            </div>
+            <div class="modal-body">
+                Do you really want to delete all the info associated with <span class="thatPerson"> </span>(<span class="hisId"></span> ??!
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                <button type="button" ng-click="deleteU(theId)" class="btn btn-danger">Yes, delete !</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $('#deleteConfirm').on('show.bs.modal', function (event) {
+        var button = $(event.relatedTarget) // Button that triggered the modal
+        var person = button.data('hisName') // Extract info from data-* attributes
+        var theId = button.data('hisId') //extract the Id, to avoid loosing it while in the modal
+// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        var modal = $(this)
+        modal.find('.modal-title').text('delete ' + person)
+        modal.find('.modal-body .thatPerson').text(person)
+        modal.find('.modal-footer .hisId').text(theId)
+
+    })
+</script>

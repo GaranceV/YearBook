@@ -25,5 +25,6 @@ angular.module('yearbookApp')
                 console.log(error); //ici normalement, besoin de gérer les erreurs :
                 //par ex on remplit un $scope.error où on donne d'autres infos
             });
-    }]);
+    }
+    ]);
 
