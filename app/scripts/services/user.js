@@ -30,22 +30,23 @@ angular.module('yearbookApp')
                     //console.log(error); pas de console log ici
                 });
         },
-        delete: function (userId) {
+        delete: function (userId, failCB) {
             $http.delete('http://poo-ihm-2015-rest.herokuapp.com/api/Users/' + userId)
-                .success(function (Result) {
+                .success(function (result) {
+                    if (result.status != 'success') {
+                        failCB(result);
+                    }
                     //console.log(Result);
                     //glop
                 })
-                .error(function (error) {
-                    console.log(error);
-                    //pas glop
-                });
+                .error(failCB);
         },
+
         all: function (successCB, failCB) {
             //on les appelle comme on veut
             $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Users')
                 .success(function (result) {
-                    if (result.status === 'success') { //on parse le json déjà, pour voir ce qu'il répond
+                    if (result.status == 'success') { //on parse le json déjà, pour voir ce qu'il répond
                         successCB(result.data);
                     }
                     else {

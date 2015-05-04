@@ -10,9 +10,11 @@
 angular.module('yearbookApp')
     .controller('UsersListCtrl', ['$scope', 'User', function ($scope, User) {
         $scope.deleteU = function(userId) {
-            User.delete(userId);
-        }
-
+            User.delete(userId,
+            function(error) {
+                console.log(error);
+            })
+        },
 
         //en premier arg, ma fonction quand c'est un succes
         User.all(function (users) { // là on appelle le service : ne renvoie rien en soit
