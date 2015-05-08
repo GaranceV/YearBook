@@ -15,7 +15,7 @@ angular
         'ngResource',
         'ngRoute',
         'ngSanitize',
-        'ngTouch'
+        'ngTouch',
     ])
 
     .config(['$routeProvider', function ($routeProvider) {
@@ -34,7 +34,11 @@ angular
             })
             .when('/newuser', {
                 templateUrl: 'views/newUser.html',
-                controller: 'NewUserCtrl'
+                controller: 'NewuserCtrl'
+            })
+            .when('/updateUser', {
+                templateUrl: 'views/updateuser.html',
+                controller: 'updateuserCtrl'
             })
             .otherwise({
                 redirectTo: '/'

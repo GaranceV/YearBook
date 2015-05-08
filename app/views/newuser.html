@@ -1,2 +1,11 @@
 If you want to add someone new to the list, you're in the right place !
 Awesome !
+<form novalidate class="simple-form">
+    First name: <input type="text" ng-model="user.name" required /> (required)<br />
+    Last name: <input type="text" ng-model="user.surname" required /> (required)<br />
+    E-mail: <input type="email" ng-model="user.email" /> (optional)<br />
+    Website: <input type="text" ng-model="user.website" /> (optional)<br />
+
+    <input type="button" ng-click="reset()" value="Reset" />
+    <input type="submit" ng-click="createUser(user)" value="Save" />
+</form>

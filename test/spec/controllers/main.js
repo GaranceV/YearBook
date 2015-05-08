@@ -9,14 +9,13 @@ describe('Controller: MainCtrl', function () {
     scope;
 
   // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
+  beforeEach(inject(function ($controller, $rootScope) { //permet d'injecter des services de l'app dans le test
+    scope = $rootScope.$new(); //rootscope permet de créer le scope automatiquement dans l'appli, là on doit le faire à la main
+                      //pour récupérer le scope
+    MainCtrl = $controller('MainCtrl', { //idem, on récup le contrôleur
       $scope: scope
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(scope.awesomeThings.length).toBe(3);
-  });
+
 });
