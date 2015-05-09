@@ -8,6 +8,6 @@
  * Controller of the yearbookApp
  */
 angular.module('yearbookApp')
-  .controller('MainCtrl', ["", "", function ($scope, User) {
+  .controller('MainCtrl', ['$scope', 'User', function ($scope, User) {
 
   }]);

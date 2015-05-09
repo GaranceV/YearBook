@@ -17,10 +17,21 @@ angular.module('yearbookApp')
             $window.location.reload();
         };
 
-        $scope.updateUser = function () {
+        $scope.getAUser = function (theIdILookFor) {
             //    get: function (userId, successCB, failCB) { //successCB & fail sont des fonctions qu'on appelle avec des params
-            console.log('beginning of updateUser, the userID : '+ $scope.theUId+'\n');
-            User.get($scope.theUId,
+            User.get(theIdILookFor,
+                function (result) {
+                    $scope.theUserToUpgrade = result;
+                },
+                function (error) {
+                    $scope.theUserToUpgrade = 'rate!'; //must deal w/ error
+                });
+        };
+
+
+        $scope.updateUser = function () {
+            // update: function (userId, newData, successCB, failCB) {
+            User.update($scope.theUserToUpgrade.id, $scope.theUserToUpgrade,
                 function (result) {
                     console.log('made it!\n');
                     console.log('the result :  ' + result+ '\n');
@@ -45,6 +56,7 @@ angular.module('yearbookApp')
                 console.log(error); //ici normalement, besoin de gérer les erreurs :
                 //par ex on remplit un $scope.error où on donne d'autres infos
             });
+
         $scope.getTheUserId = function(hisId) {
             $scope.theUId = hisId;
             console.log('ok with '+ $scope.theUId);

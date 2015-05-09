@@ -26,9 +26,13 @@
                 <h4 class="modal-title" id="upgradeModalLabel">Upgrade person</h4>
             </div>
             <div class="modal-body">
-               {{$scope.theUId}}
-
-
+                {{theUserToUpgrade.id}}
+                <form novalidate class="simple-form">
+                    First name: <input ng-model="theUserToUpgrade.name" type="text" required /> (required)<br />
+                    Last name: <input type="text" ng-model="theUserToUpgrade.surname" required /> (required)<br />
+                    E-mail: <input type="email" ng-model="theUserToUpgrade.email" /> (optional)<br />
+                    Website: <input type="text" ng-model="theUserToUpgrade.website" /> (optional)<br />
+                </form>
 
             </div>
             <div class="modal-footer">
@@ -44,7 +48,7 @@
     <button class="btn-group btn-danger" data-toggle="modal" data-target="#deleteModal" ng-click="getTheUserId(u.id)">
         delete him/her!
         <span class="glyphicon glyphicon-trash"></span></button>
-    <button class="btn-grp btn-info" data-toggle="modal" data-target="#upgradeModal" ng-click="getTheUserId(u.id)">upgrade him/her!</button>
+    <button class="btn-grp btn-info" data-toggle="modal" data-target="#upgradeModal" ng-click="getAUser(u.id)">upgrade him/her!</button>
 </li>
 </ul>
 

@@ -6,7 +6,6 @@
 
 
 angular.module('yearbookApp')
-    //  .controller('MainCtrl', function ($scope) {
     .factory('User', ['$http', function ($http) {
     var obj = {
         add: function(userInfo, successCB, failCB) {
@@ -24,17 +23,6 @@ angular.module('yearbookApp')
                 .error(failCB);
         },
         get: function (userId, successCB, failCB) { //successCB & fail sont des fonctions qu'on appelle avec des params
-/*            var successFunc = function (Result) { //ici, fonction qui s'appelle successFunc
-                //(function (Result) { exemple : ici fonction anonyme
-                if (Result.status == 'success') {
-                 console.log(Result.data)//on parse le json déjà, pour voir ce qu'il répond
-                    successCB(Result.data);
-                }
-                else {
-                    failCB(Result.data)
-                }
-                ;
-            }; */
             $http.get('http://poo-ihm-2015-rest.herokuapp.com/api/Users/' + userId)
                 .success(function (result) {
                     if (result.status == 'success') {
@@ -45,9 +33,9 @@ angular.module('yearbookApp')
                     }
                     else {
                         failCB(result.data);
-                    }
-                    ;})
-                .error(failCB(error)); //en cas d'erreur, on appelle la fonction failCB avec en param la fonction error, qui
+                    };
+                })
+                .error(failCB()); //en cas d'erreur, on appelle la fonction failCB avec en param la fonction error, qui
                     //sera appelée ensuite dans mon controller
                     //console.log(error); pas de console log ici
 
@@ -96,3 +84,15 @@ angular.module('yearbookApp')
     return obj;
 }]);
 
+/*    premiere ligne du get
+        var successFunc = function (Result) { //ici, fonction qui s'appelle successFunc
+ //(function (Result) { exemple : ici fonction anonyme
+ if (Result.status == 'success') {
+ console.log(Result.data)//on parse le json déjà, pour voir ce qu'il répond
+ successCB(Result.data);
+ }
+ else {
+ failCB(Result.data)
+ }
+ ;
+ }; */
